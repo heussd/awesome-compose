@@ -1,0 +1,11 @@
+version: "3.1"
+services:
+  sentiment:
+    image: mcr.microsoft.com/azure-cognitive-services/sentiment
+    environment:
+      EULA: accept
+      Billing: https://westeurope.api.cognitive.microsoft.com/text/analytics/v2.0
+      ApiKey: ${ApiKey}
+    ports:
+      - "5000:5000"
+
