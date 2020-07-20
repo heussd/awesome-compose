@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+    elasticsearch:
+        # user: elastic
+        # password: changeme
+        ports:
+            - '9200:9200'
+            - '9300:9300'
+        environment:
+            - discovery.type=single-node
+            - 'http.cors.allow-origin=http://localhost:1358,http://127.0.0.1:1358'
+            - http.cors.enabled=true
+            - 'http.cors.allow-origin=*'
+            - 'http.cors.allow-headers=X-Requested-With,X-Auth-Token,Content-Type,Content-Length,Authorization'
+            - http.cors.allow-credentials=true
+        image: 'docker.elastic.co/elasticsearch/elasticsearch:7.6.2'
+    elasticsearch-hq: # http://localhost:5000
+        ports:
+            - '5000:5000'
+        image: elastichq/elasticsearch-hq
+    dejavu: # http://localhost:1358 <--- ONLY WORKS IN CHROME?
+        ports:
+            - '1358:1358'
+        image: appbaseio/dejavu
+    kibana: # http://localhost:5601
+        ports:
+            - '5601:5601'
+        image: docker.elastic.co/kibana/kibana:7.6.2
+    
