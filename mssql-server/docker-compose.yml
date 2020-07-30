@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-GA-ubuntu-16.04
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=EUb8j4U5nq
+    ports:
+        - "1433:1433"
+    volumes:
+      - type: volume
+        source: mssql-data
+        target: /var/opt/mssql/   
+      - type: bind
+        source: ${PWD}/backup/
+        target: /backup/
+        consistency: delegated
+        read_only: true
+
+volumes:
+  mssql-data:
