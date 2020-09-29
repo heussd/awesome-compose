@@ -5,10 +5,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'
+          cpus: 2
           memory: 8g
         reservations:
-          cpus: '1'
+          cpus: 1
           memory: 4g
     environment:
       eula: accept
@@ -21,10 +21,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '2'
+          cpus: 2
           memory: 8g
         reservations:
-          cpus: '1'
+          cpus: 1
           memory: 4g
     environment:
       eula: accept
