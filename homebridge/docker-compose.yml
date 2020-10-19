@@ -1,0 +1,10 @@
+version: '2'
+services:
+  homebridge:
+    image: oznu/homebridge:latest
+    network_mode: host  # <---------- DOES NOT WORK ON MACOS
+    environment:
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
+    volumes:
+      - ./volumes/homebridge:/homebridge
