@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: |
+      --schedule "0 0 4 * * *" 
+      --cleanup
+      --stop-timeout 60s
+      --scope watchtower
+  parent:
+    image: nginx
+  child:
+    image: nginx:alpine
+    labels:
+      com.centurylinklabs.watchtower.scope: watchtower
+      com.centurylinklabs.watchtower.depends-on: parent
+
