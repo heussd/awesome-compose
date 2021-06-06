@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  superset:
+    image: apache/superset
+    ports:
+      - "8080:8088"
+    volumes:
+      - "./data:/data"
