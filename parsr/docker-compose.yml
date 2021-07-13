@@ -1,0 +1,20 @@
+version: '3.3'
+
+services:
+  parsr:
+    image: axarev/parsr
+    ports:
+      - 3001:3001
+    environment:
+      ABBYY_SERVER_URL:
+    volumes:
+      - ./pipeline/:/opt/app-root/src/api/server/dist/output
+
+  parsr-ui:
+    image: axarev/parsr-ui-localhost
+    ports:
+      - 8080:80
+
+volumes:
+  pipeline:
+    driver: local
