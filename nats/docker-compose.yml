@@ -1,0 +1,14 @@
+
+services:
+  nats-server:
+    image: nats:2.8
+    command: "--jetstream -m 8222 --store_dir=/data"
+    ports:
+      - "4222:4222" # 4222 is for clients.
+      - "8222:8222" # 8222 is an HTTP management port for information reporting.
+      - "6222:6222" # 6222 is a routing port for clustering.
+    volumes:
+      - "nats-persistence:/data"
+
+volumes:
+  nats-persistence:
